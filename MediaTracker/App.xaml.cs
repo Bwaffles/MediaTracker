@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MediaTracker.ViewModels;
+using MediaTracker.Views;
 using System.Windows;
 
 namespace MediaTracker
@@ -13,5 +9,14 @@ namespace MediaTracker
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            var app = new ApplicationView();
+            var context = new ApplicationViewModel();
+            app.DataContext = context;
+            app.Show();
+        }
     }
 }

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="MediaTracker.MyMovies.MovieWatchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MediaTracker.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Background="#333">
+        <Button x:Name="AddWatch" Command="NavigationCommands.GoToPage" CommandParameter="/AddWatch.xaml">Watch Sumthin'</Button>
+        <Separator></Separator>
+        <Label FontSize="20" FontFamily="Segoe UI Black" Background="Transparent" Foreground="White">My Movies
+        </Label>
+        <ItemsControl ItemsSource="{Binding GetMovies}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Label>{Binding WatchNumber}</Label>
+                    <!--<Button Content="{Binding Name}"
+                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                CommandParameter="{Binding }"
+                                Margin="2,5"
+                                Height="39" Foreground="White" FontFamily="Permanent Marker" FontSize="22" HorizontalAlignment="Left" Width="150" BorderBrush="{x:Null}">
+                    </Button>-->
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <DataGrid x:Name="MovieGrid" AlternatingRowBackground="LightBlue" AlternationCount="2" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Watch Number" Binding="{Binding WatchNumber}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>
