@@ -81,15 +81,15 @@
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Home\HomeViewModel.cs" />
-    <Compile Include="ApplicationViewModel.cs" />
+    <Compile Include="Main\MainViewModel.cs" />
     <Compile Include="Common\IPageViewModel.cs" />
     <Compile Include="MyMovies\MyMoviesViewModel.cs" />
     <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="ApplicationView.xaml.cs">
-      <DependentUpon>ApplicationView.xaml</DependentUpon>
+    <Compile Include="Main\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyMovies\MovieWatchView.xaml.cs">
-      <DependentUpon>MovieWatchView.xaml</DependentUpon>
+    <Compile Include="MyMovies\MyMoviesView.xaml.cs">
+      <DependentUpon>MyMoviesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -99,11 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ApplicationView.xaml">
+    <Page Include="Main\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyMovies\MovieWatchView.xaml">
+    <Page Include="MyMovies\MyMoviesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

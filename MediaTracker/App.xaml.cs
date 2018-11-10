@@ -1,5 +1,4 @@
-﻿using MediaTracker.ViewModels;
-using MediaTracker.Views;
+﻿using MediaTracker.Main;
 using System.Windows;
 
 namespace MediaTracker
@@ -13,8 +12,8 @@ namespace MediaTracker
         {
             base.OnStartup(e);
 
-            var app = new ApplicationView();
-            var context = new ApplicationViewModel();
+            var app = new MainView();
+            var context = new MainViewModel();
             app.DataContext = context;
             app.Show();
         }

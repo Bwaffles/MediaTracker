@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
-namespace MediaTracker.ViewModels
+namespace MediaTracker.Main
 {
-    public class ApplicationViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         private ICommand _changePageCommand;
 
@@ -57,7 +57,7 @@ namespace MediaTracker.ViewModels
             }
         }
 
-        public ApplicationViewModel()
+        public MainViewModel()
         {
             // Add available pages
             PageViewModels.Add(new HomeViewModel());

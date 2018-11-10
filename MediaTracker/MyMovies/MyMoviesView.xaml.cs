@@ -4,11 +4,11 @@ using System.Windows.Controls;
 namespace MediaTracker.MyMovies
 {
     /// <summary>
-    /// Interaction logic for MovieWatchView.xaml
+    /// Interaction logic for MyMoviesView.xaml
     /// </summary>
-    public partial class MovieWatchView : UserControl
+    public partial class MyMoviesView : UserControl
     {
-        public MovieWatchView()
+        public MyMoviesView()
         {
             InitializeComponent();
         }
