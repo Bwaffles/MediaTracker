@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMDbLib.Client;
 using TMDbLib.Objects.Movies;
 using TMDbLib.Objects.Search;
@@ -12,7 +10,7 @@ namespace Services.TMDb
         //TODO: this has to come from a config file-- but not app.config cause this will be called from another project too
         private static readonly string apiKey = "a0e9a2a4bf20414f55c0f3c1b0910ec9";
 
-        private TMDbClient Client
+        public TMDbClient Client
         {
             get;
         }

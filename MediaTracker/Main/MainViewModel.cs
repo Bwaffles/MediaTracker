@@ -57,10 +57,9 @@ namespace MediaTracker.Main
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(HomeViewModel homeViewModel)
         {
-            // Add available pages
-            PageViewModels.Add(new HomeViewModel());
+            PageViewModels.Add(homeViewModel);
             PageViewModels.Add(new MyMoviesViewModel());
 
             // Set starting page

@@ -1,4 +1,5 @@
-﻿using MediaTracker.Common;
+﻿using Application.Movies.Queries.Search;
+using MediaTracker.Common;
 using MediaTracker.Models;
 using System.Windows.Input;
 
@@ -7,8 +8,8 @@ namespace MediaTracker.Home
     public class HomeViewModel : ObservableObject, IPageViewModel
     {
         private ICommand searchCommand;
+        private ISearchMovieQuery searchMovie;
         private string searchText;
-
         public string Name => "Home";
 
         public ICommand SearchClick
@@ -35,9 +36,14 @@ namespace MediaTracker.Home
             }
         }
 
+        public HomeViewModel(ISearchMovieQuery searchMovieQuery)
+        {
+            this.searchMovie = searchMovieQuery;
+        }
+
         private void Search()
         {
-            //search movies for their text
+            var movies = searchMovie.Execute(SearchText);
         }
     }
 }
