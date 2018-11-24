@@ -1,5 +1,8 @@
 ﻿using MediaTracker.Common;
 using MediaTracker.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 
 namespace MediaTracker.MyMovies
@@ -8,10 +11,10 @@ namespace MediaTracker.MyMovies
     {
         private ICommand _getProductCommand;
         private int _movieId;
-        private MovieWatch _movieWatch;
+        private MovieWatchModel _movieWatch;
         private ICommand _saveMovieWatchCommand;
 
-        public MovieWatch CurrentMovieWatch
+        public MovieWatchModel CurrentMovieWatch
         {
             get { return _movieWatch; }
             set
@@ -52,6 +55,23 @@ namespace MediaTracker.MyMovies
             }
         }
 
+        /// <summary>
+        /// Gets a list of movie watches.
+        /// </summary>
+        public IEnumerable<MovieWatchModel> MyMovies
+        {
+            get
+            {
+                // TODO: get the list from the database. Sorted by watch date desc.
+                return new List<MovieWatchModel>
+                {
+                    new MovieWatchModel{ Id=1, MovieId=329, WatchNumber=30, WatchDate=new DateTime(2018,6,15), Title="Jurassic Park", Year=1993},
+                    new MovieWatchModel{ Id=1, MovieId=329, WatchNumber=1, WatchDate=new DateTime(2018,11,3), Title="The Kindergarden Teacher", Year=2018},
+                    new MovieWatchModel{ Id=2, MovieId=424139, WatchNumber=1, WatchDate=new DateTime(2018,10,31), Title="Halloween", Year=2018}
+                }.OrderByDescending(mw => mw.WatchDate);
+            }
+        }
+
         public string Name
         {
             get { return "My Movies"; }
@@ -87,7 +107,7 @@ namespace MediaTracker.MyMovies
         {
             // You should get the product from the database
             // but for now we'll just return a new object
-            var mw = new MovieWatch();
+            var mw = new MovieWatchModel();
             mw.MovieId = MovieId;
             mw.WatchNumber = 1;
             mw.Id = 1;

@@ -109,7 +109,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyMovies\MovieWatch.cs" />
+    <Compile Include="MyMovies\MovieWatchModel.cs" />
     <Compile Include="Common\ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
