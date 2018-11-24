@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace MediaTracker.MyMovies
 {
@@ -11,15 +10,6 @@ namespace MediaTracker.MyMovies
         public MyMoviesView()
         {
             InitializeComponent();
-        }
-
-        public List<MovieWatch> GetMovies()
-        {
-            return new List<MovieWatch>
-            {
-                new MovieWatch{ Id=1, MovieId=5, WatchNumber=1},
-                new MovieWatch{ Id=2, MovieId=5381, WatchNumber=1}
-            };
         }
     }
 }

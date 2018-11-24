@@ -6,28 +6,21 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Background="#333">
-        <Button x:Name="AddWatch" Command="NavigationCommands.GoToPage" CommandParameter="/AddWatch.xaml">Watch Sumthin'</Button>
-        <Separator></Separator>
-        <Label FontSize="20" FontFamily="Segoe UI Black" Background="Transparent" Foreground="White">My Movies
-        </Label>
-        <ItemsControl ItemsSource="{Binding GetMovies}">
+        <ItemsControl ItemsSource="{Binding MyMovies}" Margin="20">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Label>{Binding WatchNumber}</Label>
-                    <!--<Button Content="{Binding Name}"
-                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                                CommandParameter="{Binding }"
-                                Margin="2,5"
-                                Height="39" Foreground="White" FontFamily="Permanent Marker" FontSize="22" HorizontalAlignment="Left" Width="150" BorderBrush="{x:Null}">
-                    </Button>-->
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="{Binding Title}" FontSize="20" Foreground="White" />
+                        <Label Content="{Binding Year}" Grid.Column="1" FontSize="20" Foreground="White" />
+                        <Label Content="{Binding WatchNumber}" Grid.Column="2" FontSize="20" Foreground="White" />
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <DataGrid x:Name="MovieGrid" AlternatingRowBackground="LightBlue" AlternationCount="2" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
-                <DataGridTextColumn Header="Watch Number" Binding="{Binding WatchNumber}" />
-            </DataGrid.Columns>
-        </DataGrid>
     </StackPanel>
 </UserControl>
