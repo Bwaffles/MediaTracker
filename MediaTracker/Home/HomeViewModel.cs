@@ -1,6 +1,7 @@
 ﻿using Application.Movies.Queries.Search;
 using MediaTracker.Common;
 using MediaTracker.Models;
+using System.Collections;
 using System.Windows.Input;
 
 namespace MediaTracker.Home
@@ -9,6 +10,7 @@ namespace MediaTracker.Home
     {
         private ICommand searchCommand;
         private ISearchMovieQuery searchMovie;
+        private IEnumerable searchMovies;
         private string searchText;
         public string Name => "Home";
 
@@ -20,6 +22,19 @@ namespace MediaTracker.Home
                     searchCommand = new RelayCommand(param => Search());
 
                 return searchCommand;
+            }
+        }
+
+        public IEnumerable SearchMovies
+        {
+            get { return searchMovies; }
+            set
+            {
+                if (value != searchMovies)
+                {
+                    searchMovies = value;
+                    OnPropertyChanged("SearchMovies");
+                }
             }
         }
 
@@ -43,7 +58,7 @@ namespace MediaTracker.Home
 
         private void Search()
         {
-            var movies = searchMovie.Execute(SearchText);
+            SearchMovies = searchMovie.Execute(SearchText);
         }
     }
 }
