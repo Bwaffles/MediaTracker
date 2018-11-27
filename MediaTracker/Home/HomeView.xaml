@@ -7,23 +7,23 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel Background="#333" Margin="0,0,0,-8">
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox HorizontalAlignment="Left" Height="35" Width="525" FontSize="24" Text="{Binding SearchText}" />
-            <Button Content="Search" Width="75" Height="35" FontSize="20" Command="{Binding SearchClick}" />
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,25,0,0">
+            <TextBox HorizontalAlignment="Left" Height="35" Width="525" FontSize="24" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Search" Width="75" Height="35" FontSize="20" Command="{Binding SearchClick}" IsDefault="True" />
         </StackPanel>
-        <ItemsControl DockPanel.Dock="Bottom" ItemsSource="{Binding SearchMovies}" Margin="20">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="0,0,0,5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Content="{Binding Title}" FontSize="20" Foreground="White" />
-                        <Label Content="{Binding Year}" Grid.Column="1" FontSize="20" Foreground="White" />
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ItemsControl DockPanel.Dock="Bottom" ItemsSource="{Binding SearchMovies}" Margin="20">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Content="{Binding Title}" FontSize="20" Foreground="White" Background="#333" HorizontalContentAlignment="Left" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

@@ -16,7 +16,7 @@ namespace Application.Movies
         public IEnumerable Search(string searchText)
         {
             return tmdbService.Client.SearchMovieAsync(searchText).Result.Results
-                .Select(movie => new { Title = movie.Title });
+                .Select(movie => new { Title = string.Format($"{movie.Title} ({movie.ReleaseDate.Value.Year})") });
         }
     }
 }
