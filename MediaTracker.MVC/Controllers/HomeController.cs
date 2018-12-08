@@ -1,6 +1,4 @@
-﻿using Application.Movies;
-using Application.Movies.Queries.Search;
-using Services.TMDb;
+﻿using Application.Movies.Queries.Search;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -10,9 +8,9 @@ namespace MediaTracker.MVC.Controllers
     {
         private ISearchMovieQuery searchMovieQuery;
 
-        public HomeController()
+        public HomeController(ISearchMovieQuery searchMovieQuery)
         {
-            this.searchMovieQuery = new SearchMovieQuery(new MovieRepository(new TMDbService()));
+            this.searchMovieQuery = searchMovieQuery;
         }
 
         public ActionResult Index(string searchString)
