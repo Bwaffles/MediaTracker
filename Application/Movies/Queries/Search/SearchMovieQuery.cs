@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Movies.Queries.Search
 {
@@ -11,9 +12,9 @@ namespace Application.Movies.Queries.Search
             this.movieRepository = movieRepository;
         }
 
-        public IEnumerable Execute(string searchText)
+        public IEnumerable<SearchListItemModel> Execute(string searchText)
         {
-            return movieRepository.Search(searchText);
+            return movieRepository.Search(searchText).Select(m => new SearchListItemModel { Title = m.Title });
         }
     }
 }

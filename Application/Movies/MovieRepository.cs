@@ -1,5 +1,5 @@
 ﻿using Services.TMDb;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Application.Movies
@@ -13,10 +13,10 @@ namespace Application.Movies
             this.tmdbService = tmdbService;
         }
 
-        public IEnumerable Search(string searchText)
+        public IEnumerable<Movie> Search(string searchText)
         {
             return tmdbService.Client.SearchMovieAsync(searchText).Result.Results
-                .Select(movie => new { Title = string.Format($"{movie.Title} ({movie.ReleaseDate.Value.Year})") });
+                .Select(movie => new Movie { Title = string.Format($"{movie.Title} ({movie.ReleaseDate?.Year})") });
         }
     }
 }

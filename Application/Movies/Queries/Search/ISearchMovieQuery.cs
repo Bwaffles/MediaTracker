@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace Application.Movies.Queries.Search
 {
     public interface ISearchMovieQuery
     {
-        IEnumerable Execute(string searchText);
+        IEnumerable<SearchListItemModel> Execute(string searchText);
     }
 }
