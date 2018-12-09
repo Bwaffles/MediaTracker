@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="card col-8 offset-2">
                     <div class="card-body">
-                        @item.Title
+                        @Html.ActionLink(@item.Title, "Details", new { id = item.Id })
                     </div>
                 </div>
             </div>

@@ -14,7 +14,13 @@ namespace Application.Movies.Queries.Search
 
         public IEnumerable<SearchListItemModel> Execute(string searchText)
         {
-            return movieRepository.Search(searchText).Select(m => new SearchListItemModel { Title = m.Title });
+            return movieRepository
+                .Search(searchText)
+                .Select(m => new SearchListItemModel
+                {
+                    Title = m.Title,
+                    Id = m.Id
+                });
         }
     }
 }

@@ -13,6 +13,11 @@ namespace MediaTracker.MVC.Controllers
             this.searchMovieQuery = searchMovieQuery;
         }
 
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
         public ActionResult Index(string searchString)
         {
             if (searchString == null)
