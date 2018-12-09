@@ -14,7 +14,9 @@
             var movie = movieRepository.FindById(id);
             return new MovieDetailModel
             {
-                Title = movie.Title
+                Title = movie.Title,
+                Overview = movie.Overview,
+                PosterUrl = movie.PosterUrl
             };
         }
     }

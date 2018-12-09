@@ -1,4 +1,5 @@
-﻿using Services.TMDb;
+﻿using Mapster;
+using Services.TMDb;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,10 +17,12 @@ namespace Application.Movies
         public Movie FindById(int id)
         {
             var movie = tmdbService.Client.GetMovieAsync(id).Result;
-            return new Movie
-            {
-                Title = movie.Title
-            };
+            TypeAdapterConfig<TMDbLib.Objects.Movies.Movie, Movie>
+                .NewConfig()
+                .Map(dest => dest.Title, src => string.Format("{0} ({1})", src.Title, (src.ReleaseDate.HasValue ? src.ReleaseDate.Value.Year.ToString() : string.Empty)))
+                .Map(dest => dest.PosterUrl, src => tmdbService.GetImagePath(PosterSize.Large, src.PosterPath))
+                .Map(dest => dest.Overview, src => src.Overview);
+            return movie.Adapt<Movie>();
         }
 
         public IEnumerable<Movie> Search(string searchText)

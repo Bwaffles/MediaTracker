@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="3.2.0" />
     <PackageReference Include="Unity" Version="5.8.13" />
   </ItemGroup>
 

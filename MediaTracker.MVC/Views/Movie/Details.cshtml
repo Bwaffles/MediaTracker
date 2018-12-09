@@ -1,9 +1,15 @@
 ﻿@model  Application.Movies.Queries.GetMovieDetails.MovieDetailModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Html.DisplayFor(model => model.Title);
 }
 
-<h2>@Html.DisplayFor(model => model.Title)</h2>
-
-    Hi, I'm the details, nothing to see here yet.
+<div class="row">
+    <div class="col-3">
+        <img src="@Model.PosterUrl" alt="No Image" class="img-thumbnail">
+    </div>
+    <div class="col-9">
+        <h1>@Html.DisplayFor(model => model.Title)</h1>
+        @Html.DisplayFor(model => model.Overview)
+    </div>
+</div>
