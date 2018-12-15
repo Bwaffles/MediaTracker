@@ -16,7 +16,8 @@
             {
                 Title = movie.Title,
                 Overview = movie.Overview,
-                PosterUrl = movie.PosterUrl
+                PosterUrl = movie.PosterUrl,
+                Genres = movie.Genres
             };
         }
     }

@@ -1,4 +1,5 @@
 ﻿@model  Application.Movies.Queries.GetMovieDetails.MovieDetailModel
+@using MediaTracker.MVC.Extensions
 
 @{
     ViewBag.Title = @Html.DisplayFor(model => model.Title);
@@ -9,7 +10,15 @@
         <img src="@Model.PosterUrl" alt="No Image" class="img-thumbnail">
     </div>
     <div class="col-9">
-        <h1>@Html.DisplayFor(model => model.Title)</h1>
+        <h1>
+            @Html.DisplayFor(model => model.Title)
+            <small class="text-muted">
+                @foreach (var item in Model.Genres)
+                {
+                    @Html.GenreIcon(item)
+                }
+            </small>
+        </h1>
         @Html.DisplayFor(model => model.Overview)
     </div>
 </div>

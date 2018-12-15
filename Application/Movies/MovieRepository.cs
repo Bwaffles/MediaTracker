@@ -21,7 +21,8 @@ namespace Application.Movies
                 .NewConfig()
                 .Map(dest => dest.Title, src => string.Format("{0} ({1})", src.Title, (src.ReleaseDate.HasValue ? src.ReleaseDate.Value.Year.ToString() : string.Empty)))
                 .Map(dest => dest.PosterUrl, src => tmdbService.GetImagePath(PosterSize.Large, src.PosterPath))
-                .Map(dest => dest.Overview, src => src.Overview);
+                .Map(dest => dest.Overview, src => src.Overview)
+                .Map(dest => dest.Genres, src => src.Genres.Select(g => (Genre)g.Id));
             return movie.Adapt<Movie>();
         }
 
