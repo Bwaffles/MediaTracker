@@ -21,10 +21,10 @@ namespace Application.Movies.Queries.GetMovieDetails
                 PosterUrl = movie.PosterUrl,
                 Genres = movie.Genres,
                 Id = movie.Id,
-                WatchHistory = movie.WatchHistory.Select(wh => new WatchHistoryModel
+                WatchHistory = movie.WatchHistory.Select(wh => new WatchModel
                 {
-                    Number = wh.WatchNumber,
-                    WatchedOn = wh.WatchDate.ToLongDateString(),
+                    Number = wh.Number,
+                    WatchedOn = wh.Date.ToLongDateString(),
                     Rating = wh.Rating.ToString(),
                     Comment = wh.Comment,
                 })

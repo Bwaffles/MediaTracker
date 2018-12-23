@@ -2,11 +2,11 @@
 
 namespace Domain
 {
-    public class WatchHistory
+    public class Watch
     {
         public string Comment { get; set; }
+        public DateTime Date { get; set; }
+        public int Number { get; set; }
         public decimal Rating { get; set; }
-        public DateTime WatchDate { get; set; }
-        public int WatchNumber { get; set; }
     }
 }

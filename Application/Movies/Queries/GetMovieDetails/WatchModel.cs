@@ -1,6 +1,6 @@
 ﻿namespace Application.Movies.Queries.GetMovieDetails
 {
-    public class WatchHistoryModel
+    public class WatchModel
     {
         public string Comment { get; set; }
         public int Number { get; set; }

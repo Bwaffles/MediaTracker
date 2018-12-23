@@ -9,6 +9,6 @@ namespace Domain
         public string Overview { get; set; }
         public string PosterUrl { get; set; }
         public string Title { get; set; }
-        public IEnumerable<WatchHistory> WatchHistory { get; set; }
+        public IEnumerable<Watch> WatchHistory { get; set; }
     }
 }

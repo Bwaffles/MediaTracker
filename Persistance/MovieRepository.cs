@@ -31,7 +31,7 @@ namespace Persistance
             using (var connection = Connection)
             {
                 connection.Open();
-                movie.WatchHistory = connection.Query<WatchHistory>($"select wh.* from public.\"WatchHistory\" wh where wh.\"MovieId\"={movie.Id}"); //TODO make this look better
+                movie.WatchHistory = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where wh.\"MovieId\"={movie.Id}"); //TODO make this look better
                 connection.Close();
             }
 

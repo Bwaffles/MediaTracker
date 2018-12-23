@@ -6,7 +6,7 @@ namespace Application.Movies.Queries.GetMovieDetails
 {
     public class MovieDetailModel
     {
-        private IEnumerable<WatchHistoryModel> _watchHistory;
+        private IEnumerable<WatchModel> _watchHistory;
 
         public List<Genre> Genres { get; set; }
 
@@ -23,11 +23,11 @@ namespace Application.Movies.Queries.GetMovieDetails
             get { return WatchHistory.Any(); }
         }
 
-        public IEnumerable<WatchHistoryModel> WatchHistory
+        public IEnumerable<WatchModel> WatchHistory
         {
             get
             {
-                return _watchHistory ?? Enumerable.Empty<WatchHistoryModel>();
+                return _watchHistory ?? Enumerable.Empty<WatchModel>();
             }
             set => _watchHistory = value;
         }
