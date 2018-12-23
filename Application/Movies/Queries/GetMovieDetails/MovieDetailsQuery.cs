@@ -1,4 +1,6 @@
-﻿namespace Application.Movies.Queries.GetMovieDetails
+﻿using System.Linq;
+
+namespace Application.Movies.Queries.GetMovieDetails
 {
     public class MovieDetailsQuery : IMovieDetailsQuery
     {
@@ -17,7 +19,15 @@
                 Title = movie.Title,
                 Overview = movie.Overview,
                 PosterUrl = movie.PosterUrl,
-                Genres = movie.Genres
+                Genres = movie.Genres,
+                Id = movie.Id,
+                WatchHistory = movie.WatchHistory.Select(wh => new WatchHistoryModel
+                {
+                    Number = wh.WatchNumber,
+                    WatchedOn = wh.WatchDate.ToLongDateString(),
+                    Rating = wh.Rating.ToString(),
+                    Comment = wh.Comment,
+                })
             };
         }
     }

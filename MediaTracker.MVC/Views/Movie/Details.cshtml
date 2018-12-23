@@ -15,7 +15,7 @@
             <small class="text-muted">
                 @foreach (var item in Model.Genres)
                 {
-                @Html.GenreIcon(item)
+                    @Html.GenreIcon(item)
                 }
             </small>
         </h1>
@@ -25,11 +25,6 @@
 <br />
 <div class="row">
     <div class="col-12">
-        <h1>History</h1>
-        <hr />
-        <p class="text-center font-weight-bold">Nothing to see here. What are you waiting for...?</p>
-        <p class="offset-3 col-6">
-            <button type="button" class="btn btn-success btn-block">Ok, I Watched It!</button>
-        </p>
+        @Html.Partial("_History", Model)
     </div>
 </div>

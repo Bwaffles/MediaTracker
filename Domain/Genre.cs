@@ -1,4 +1,4 @@
-﻿namespace Application.Movies
+﻿namespace Domain
 {
     public enum Genre
     {

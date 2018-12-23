@@ -1,11 +1,14 @@
-﻿using Mapster;
+﻿using Application.Movies;
+using Dapper;
+using Domain;
+using Mapster;
 using Services.TMDb;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Application.Movies
+namespace Persistance
 {
-    public class MovieRepository : IMovieRepository
+    public class MovieRepository : Repository, IMovieRepository
     {
         private ITMDbService tmdbService;
 
@@ -16,14 +19,23 @@ namespace Application.Movies
 
         public Movie FindById(int id)
         {
-            var movie = tmdbService.Client.GetMovieAsync(id).Result;
+            //Get movie from TMDB API
             TypeAdapterConfig<TMDbLib.Objects.Movies.Movie, Movie>
                 .NewConfig()
                 .Map(dest => dest.Title, src => string.Format("{0} ({1})", src.Title, (src.ReleaseDate.HasValue ? src.ReleaseDate.Value.Year.ToString() : string.Empty)))
                 .Map(dest => dest.PosterUrl, src => tmdbService.GetImagePath(PosterSize.Large, src.PosterPath))
-                .Map(dest => dest.Overview, src => src.Overview)
                 .Map(dest => dest.Genres, src => src.Genres.Select(g => (Genre)g.Id));
-            return movie.Adapt<Movie>();
+            var movie = tmdbService.Client.GetMovieAsync(id).Result.Adapt<Movie>();
+
+            //Get WatchHistory from DB
+            using (var connection = Connection)
+            {
+                connection.Open();
+                movie.WatchHistory = connection.Query<WatchHistory>($"select wh.* from public.\"WatchHistory\" wh where wh.\"MovieId\"={movie.Id}"); //TODO make this look better
+                connection.Close();
+            }
+
+            return movie;
         }
 
         public IEnumerable<Movie> Search(string searchText)

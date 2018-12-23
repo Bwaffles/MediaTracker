@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaTracker.MVC", "MediaTr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "Application.Tests\Application.UnitTests.csproj", "{8F1ADFAF-25FC-404B-977F-141D2296D466}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migration\Migrations.csproj", "{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

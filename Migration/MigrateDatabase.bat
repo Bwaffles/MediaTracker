@@ -1,0 +1,1 @@
+﻿Migrate.exe /connection "Server=127.0.0.1;Database=MediaTracker;User Id=postgres;Password=t478569" /db Postgres /timeout 600 /target C:\Users\Thana\source\repos\MediaTracker\Migrations\bin\Debug\netstandard2.0\Migrations.dll
