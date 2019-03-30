@@ -30,7 +30,7 @@ namespace Migrations
                     .AddPostgres()
                     .WithGlobalConnectionString("Server=127.0.0.1;Database=MediaTracker;User Id=postgres;Password=t478569")
                     // Define the assembly containing the migrations
-                    .ScanIn(typeof(Create_WatchHistory).Assembly).For.Migrations())
+                    .ScanIn(typeof(Create_Watch).Assembly).For.Migrations())
                 // Enable logging to console in the FluentMigrator way
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 //.AddScoped<PostgresQuoter, NoQuoteQuoter>()

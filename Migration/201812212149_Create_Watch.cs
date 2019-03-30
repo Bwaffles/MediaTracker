@@ -3,7 +3,7 @@
 namespace Migrations
 {
     [Migration(201812212149)]
-    public class Create_WatchHistory : Migration
+    public class Create_Watch : Migration
     {
         public override void Down()
         {
