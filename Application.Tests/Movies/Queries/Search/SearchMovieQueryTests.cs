@@ -6,6 +6,7 @@ using Moq;
 using System.Collections.Generic;
 using FluentAssertions;
 using System.Linq;
+using Domain;
 
 namespace Application.Tests.Movies.Queries.Search
 {

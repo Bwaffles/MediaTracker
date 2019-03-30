@@ -102,6 +102,10 @@
       <Project>{06395D72-4910-472E-BBE0-CE27BC036CB1}</Project>
       <Name>Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{4E82516E-E04E-414D-9FF0-B2D370FA0E18}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
