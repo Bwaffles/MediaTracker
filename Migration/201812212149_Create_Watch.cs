@@ -13,7 +13,7 @@ namespace Migrations
         public override void Up()
         {
             Create.Table("Watch")
-                .WithColumn("Id").AsInt32().PrimaryKey()
+                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Number").AsInt16().NotNullable()
                 .WithColumn("MovieId").AsInt32().NotNullable()
                 .WithColumn("Rating").AsDecimal(5, 2).Nullable()

@@ -47,5 +47,18 @@ namespace Persistance
                     Id = movie.Id
                 });
         }
+
+        public void WatchMovie(Watch watch)
+        { // TODO: make this look better and protect against sql injection
+            using (var connection = Connection)
+            {
+                connection.Open();
+
+                connection.Execute($"INSERT INTO public.\"Watch\"(\"Number\", \"MovieId\", \"Rating\", \"Date\", \"Comment\") " +
+                    $"VALUES({watch.Number}, {watch.MovieId}, {watch.Rating}, '{watch.Date?.ToString("MM/dd/yyyy")}', '{watch.Comment}');");
+
+                connection.Close();
+            }
+        }
     }
 }

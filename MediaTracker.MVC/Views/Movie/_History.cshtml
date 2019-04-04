@@ -6,11 +6,14 @@
 {
     <p class="text-center font-weight-bold">Nothing to see here. What are you waiting for...?</p>
     <p class="offset-3 col-6">
-        @Html.ActionLink("I've Watched It!", "Watch", new { id = Model.Id }, new { Class = "btn btn-success btn-block" })
+        @Html.ActionLink("I've watched it!", "Watch", new { movieId = Model.Id }, new { Class = "btn btn-success btn-block" })
     </p>
 }
 else
 {
+    <p class="offset-3 col-6">
+        @Html.ActionLink("I've watched it... again!", "Watch", new { movieId = Model.Id }, new { Class = "btn btn-success btn-block" })
+    </p>
     <div class="accordion" id="accordionExample">
         @foreach (var watchHistory in Model.WatchHistory)
         {
