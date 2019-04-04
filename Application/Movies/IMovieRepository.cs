@@ -13,5 +13,11 @@ namespace Application.Movies
         Movie FindById(int id);
 
         IEnumerable<Movie> Search(string searchText);
+
+        /// <summary>
+        /// Watch a movie.
+        /// </summary>
+        /// <param name="watch">The watch details.</param>
+        void WatchMovie(Watch watch);
     }
 }
