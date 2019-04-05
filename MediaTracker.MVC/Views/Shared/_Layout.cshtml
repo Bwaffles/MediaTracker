@@ -6,35 +6,36 @@
     <title>@ViewBag.Title - Media Tracker</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+
+        .main.container {
+            margin: 6em 0 4em 0;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Media Tracker</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Movies", "Index", "Movie", null, new { @class = "nav-link" })
-                </li>
-            </ul>
+    <nav class="ui huge fixed inverted menu">
+        <div class="ui container">
+            <div class="header item">
+                Media Tracker
+            </div>
+            <div class="item">
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+            </div>
+            <div class="item">
+                @Html.ActionLink("Movies", "Index", "Movie", null, new { @class = "nav-link" })
+            </div>
         </div>
     </nav>
-    <main class="container" role="main">
+    <div class="ui main container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Media Tracker</p>
-        </footer>
-    </main>
+    </div>
+    <footer class="ui inverted vertical footer segment">
+        <p>&copy; @DateTime.Now.Year - Media Tracker</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

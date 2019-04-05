@@ -505,7 +505,6 @@
     <Content Include="webfonts\fa-solid-900.ttf" />
     <Content Include="webfonts\fa-solid-900.woff" />
     <Content Include="webfonts\fa-solid-900.woff2" />
-    <Content Include="Views\Movie\_History.cshtml" />
     <Content Include="Views\Movie\Watch.cshtml" />
     <Content Include="semantic\dist\themes\basic\assets\fonts\icons.eot" />
     <Content Include="semantic\dist\themes\basic\assets\fonts\icons.ttf" />

@@ -16,7 +16,7 @@ namespace MediaTracker.MVC.Extensions
             else
             {
                 var iTag = new TagBuilder("i");
-                iTag.AddCssClass($"fas fa-{genreIcon}");
+                iTag.AddCssClass($"fas fas-lg fa-{genreIcon}");
                 iTag.Attributes["title"] = genre.ToString();
                 iTag.Attributes["style"] = "padding:0 5px";
 

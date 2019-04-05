@@ -5,26 +5,61 @@
     ViewBag.Title = @Html.DisplayFor(model => model.Title);
 }
 
-<div class="row">
-    <div class="col-3">
-        <img src="@Model.PosterUrl" alt="No Image" class="img-thumbnail">
+<div class="ui grid">
+    <div class="four wide column">
+        <img src="@Model.PosterUrl" alt="No Image" class="ui image">
     </div>
-    <div class="col-9">
+    <div class="twelve wide column">
         <h1>
             @Html.DisplayFor(model => model.Title)
-            <small class="text-muted">
-                @foreach (var item in Model.Genres)
-                {
-                    @Html.GenreIcon(item)
-                }
-            </small>
+            @foreach (var item in Model.Genres)
+            {
+                @Html.GenreIcon(item)
+            }
         </h1>
         @Html.DisplayFor(model => model.Overview)
+
+        <h2 class="ui horizontal divider header">
+            History
+        </h2>
+        @if (!Model.Watched)
+        {
+            <p style="font-weight:bold; text-align:center">Nothing to see here. What are you waiting for...?</p>
+            @Html.ActionLink("I've watched it!", "Watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
+        }
+        else
+        {
+            @Html.ActionLink("I've watched it... again!", "Watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
+            <div class="ui large feed">
+
+                @foreach (var watchHistory in Model.WatchHistory)
+                {
+                    var collapseId = "collapseOne" + watchHistory.Number;
+                    <div class="event">
+                        <div class="content">
+                            <div class="summary">
+                                Watched
+                                <div class="date">
+                                    @watchHistory.WatchedOn
+                                </div>
+                                <div class="ui star rating" data-rating="@watchHistory.Rating" data-max-rating="10"></div>
+                            </div>
+                            <div class="extra text">
+                                @watchHistory.Comment
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     </div>
 </div>
-<br />
-<div class="row">
-    <div class="col-12">
-        @Html.Partial("_History", Model)
-    </div>
-</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.ui.rating')
+                .rating("disable");
+        });
+    </script>
+}
