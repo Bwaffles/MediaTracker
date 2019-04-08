@@ -31,7 +31,8 @@ namespace Persistance
             using (var connection = Connection)
             {
                 connection.Open();
-                movie.WatchHistory = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where wh.\"MovieId\"={movie.Id}"); //TODO make this look better
+                movie.WatchHistory = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where wh.\"MovieId\" = @Id",
+                    new { movie.Id });
                 connection.Close();
             }
 
@@ -55,7 +56,8 @@ namespace Persistance
                 connection.Open();
 
                 connection.Execute($"INSERT INTO public.\"Watch\"(\"Number\", \"MovieId\", \"Rating\", \"Date\", \"Comment\") " +
-                    $"VALUES({watch.Number}, {watch.MovieId}, {watch.Rating}, '{watch.Date?.ToString("MM/dd/yyyy")}', '{watch.Comment}');");
+                    $"VALUES(@Number, @MovieId, @Rating, @Date, @Comment);",
+                    new { watch.Number, watch.MovieId, watch.Rating, watch.Date, watch.Comment });
 
                 connection.Close();
             }
