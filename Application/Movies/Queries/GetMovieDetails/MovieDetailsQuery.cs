@@ -24,7 +24,7 @@ namespace Application.Movies.Queries.GetMovieDetails
                 WatchHistory = movie.WatchHistory.Select(wh => new WatchModel
                 {
                     Number = wh.Number,
-                    WatchedOn = wh.Date?.ToLongDateString(),
+                    WatchedOn = wh.Date?.ToString("MMMM dd, yyyy hh:mm tt"),
                     Rating = wh.Rating.ToString(),
                     Comment = wh.Comment,
                 })

@@ -30,23 +30,31 @@
         else
         {
             @Html.ActionLink("I've watched it... again!", "Watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
-            <div class="ui large feed">
+            <br />
+            <div class="ui cards">
 
                 @foreach (var watchHistory in Model.WatchHistory)
                 {
-                    var collapseId = "collapseOne" + watchHistory.Number;
-                    <div class="event">
+                    <div class="ui fluid card">
                         <div class="content">
-                            <div class="summary">
-                                Watched
-                                <div class="date">
-                                    @watchHistory.WatchedOn
-                                </div>
-                                <div class="ui star rating" data-rating="@watchHistory.Rating" data-max-rating="10"></div>
+                            <div class="header">
+                                @watchHistory.WatchedOn
                             </div>
-                            <div class="extra text">
+                            <div class="description">
                                 @watchHistory.Comment
+
+                                <div class="rating" data-yo-rating="@watchHistory.Rating"></div>
                             </div>
+                        </div>
+                        <div class="extra content">
+                            <span class="left floated">
+                                <i class="pencil icon"></i>
+                                Edit
+                            </span>
+                            <span class="right floated">
+                                <i class="trash icon"></i>
+                                Delete
+                            </span>
                         </div>
                     </div>
                 }
@@ -57,9 +65,16 @@
 
 @section scripts{
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('.ui.rating')
-                .rating("disable");
-        });
+        $(".rating").each(function () {
+            $(this).rateYo({
+                starWidth: "25px",
+                numStars: 10,
+                maxValue: 10,
+                normalFill: '#fff9c4',
+                ratedFill: '#ffd54f',
+                readOnly: true,
+                rating: $(this)[0].dataset.yoRating,
+            })
+        })
     </script>
 }
