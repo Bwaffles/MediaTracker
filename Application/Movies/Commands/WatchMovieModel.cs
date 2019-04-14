@@ -14,11 +14,9 @@ namespace Application.Movies.Commands
         public DateTime? Date { get; set; }
 
         [Display(Name = "Number")]
-        [Range(1, 1000)]
         public int Number { get; set; }
 
         [Display(Name = "Rating")]
-        [Range(0, 10)]
         public decimal Rating { get; set; }
     }
 }

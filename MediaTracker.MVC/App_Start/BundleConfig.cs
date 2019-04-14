@@ -19,12 +19,16 @@ namespace MediaTracker.MVC
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                      "~/semantic/dist/semantic.min.js"));
+                      "~/semantic/dist/semantic.min.js",
+                      "~/Scripts/jquery.barrating.min.js",
+                      "~/Scripts/jquery.rateyo.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css",
                       "~/Content/all.min.css",
-                      "~/semantic/dist/semantic.min.css"));
+                      "~/semantic/dist/semantic.min.css",
+                      "~/Content/bars-movie.css",
+                      "~/Content/jquery.rateyo.css"));
         }
     }
 }

@@ -47,12 +47,13 @@ namespace MediaTracker.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Watch(WatchMovieModel model)
         {
             if (ModelState.IsValid)
             {
                 watchMovieCommand.Execute(model);
-                return RedirectToAction("Details", new { id = model.MovieId });
+                return Json(new { redirectToUrl = Url.Action("Details", "Movie", new { id = model.MovieId }) });
             }
 
             return View(model);

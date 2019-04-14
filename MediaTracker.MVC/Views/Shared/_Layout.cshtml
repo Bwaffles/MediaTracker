@@ -30,9 +30,11 @@
     <div class="ui main container">
         @RenderBody()
     </div>
-    <footer class="ui inverted vertical footer segment">
-        <p>&copy; @DateTime.Now.Year - Media Tracker</p>
-    </footer>
+    <div class="ui inverted vertical footer segment">
+        <div class="ui center aligned container">
+            <p>&copy; @DateTime.Now.Year - Media Tracker</p>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/js")
