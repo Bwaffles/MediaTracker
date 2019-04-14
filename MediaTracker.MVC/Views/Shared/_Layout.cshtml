@@ -7,26 +7,22 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-
         .main.container {
             margin: 6em 0 4em 0;
         }
     </style>
 </head>
 <body>
-    <nav class="ui huge fixed inverted menu">
-        <div class="ui container">
-            <div class="header item">
-                Media Tracker
-            </div>
-            <div class="item">
-                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
-            </div>
-            <div class="item">
-                @Html.ActionLink("Movies", "Index", "Movie", null, new { @class = "nav-link" })
-            </div>
-        </div>
-    </nav>
+    <div class="ui visible inverted left demo vertical labeled icon sidebar menu">
+        <a class="item" href="~/Home">
+            <i class="home icon"></i>
+            Home
+        </a>
+        <a class="item" href="~/Movie">
+            <i class="block film icon"></i>
+            Movies
+        </a>
+    </div>
     <div class="ui main container">
         @RenderBody()
     </div>
@@ -35,6 +31,7 @@
             <p>&copy; @DateTime.Now.Year - Media Tracker</p>
         </div>
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/js")
