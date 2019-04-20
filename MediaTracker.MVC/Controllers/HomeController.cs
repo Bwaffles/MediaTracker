@@ -1,12 +1,20 @@
-﻿using System.Web.Mvc;
+﻿using Application.Movies.Queries.Dashboard;
+using System.Web.Mvc;
 
 namespace MediaTracker.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        private IMovieDashboardQuery movieDashboardQuery;
+
+        public HomeController(IMovieDashboardQuery movieDashboardQuery)
+        {
+            this.movieDashboardQuery = movieDashboardQuery;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            return View(movieDashboardQuery.Execute());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Application.Movies.Queries.Dashboard;
+using Domain;
 using System.Collections.Generic;
 
 namespace Application.Movies
@@ -13,6 +14,8 @@ namespace Application.Movies
         Movie FindById(int id);
 
         IEnumerable<Movie> Search(string searchText);
+
+        MovieDashboardModel GetDashboardDetails();
 
         /// <summary>
         /// Watch a movie.

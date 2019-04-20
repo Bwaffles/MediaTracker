@@ -1,4 +1,6 @@
-﻿using Application.Movies;
+﻿using Application;
+using Application.Movies;
+using Application.Movies.Queries.Dashboard;
 using Dapper;
 using Domain;
 using Mapster;
@@ -26,17 +28,43 @@ namespace Persistance
                 .Map(dest => dest.PosterUrl, src => tmdbService.GetImagePath(PosterSize.Large, src.PosterPath))
                 .Map(dest => dest.Genres, src => src.Genres.Select(g => (Genre)g.Id));
             var movie = tmdbService.Client.GetMovieAsync(id).Result.Adapt<Movie>();
+            movie.WatchHistory = GetWatches(id);
 
-            //Get WatchHistory from DB
+            return movie;
+        }
+
+        private IEnumerable<Watch> GetWatches(int? movieId = null)
+        {
+            IEnumerable<Watch> watches;
             using (var connection = Connection)
             {
                 connection.Open();
-                movie.WatchHistory = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where wh.\"MovieId\" = @Id order by wh.\"Date\" desc",
-                    new { movie.Id });
+                watches = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where @Id is null or wh.\"MovieId\" = @Id order by wh.\"Date\" desc",
+                    new { Id = movieId });
                 connection.Close();
             }
+            return watches;
+        }
 
-            return movie;
+        public MovieDashboardModel GetDashboardDetails()
+        {
+            var movieDashboard = new MovieDashboardModel();
+
+            TypeAdapterConfig<TMDbLib.Objects.Movies.Movie, WatchedList>
+                .NewConfig()
+                .Map(dest => dest.Title, src => string.Format("{0} ({1})", src.Title, (src.ReleaseDate.HasValue ? src.ReleaseDate.Value.Year.ToString() : string.Empty)))
+                .Map(dest => dest.PosterUrl, src => tmdbService.GetImagePath(PosterSize.Small, src.PosterPath))
+                .Map(dest => dest.MovieId, src => src.Id);
+
+            var lastWatched = GetWatches().Take(10);
+            movieDashboard.LastWatched = lastWatched.Select(lw =>
+            {
+                var watchedItem = tmdbService.Client.GetMovieAsync(lw.MovieId).Result.Adapt<WatchedList>();
+                watchedItem.Date = lw.Date.PrettyDate();
+                return watchedItem;
+            });
+
+            return movieDashboard;
         }
 
         public IEnumerable<Movie> Search(string searchText)
@@ -50,7 +78,7 @@ namespace Persistance
         }
 
         public void WatchMovie(Watch watch)
-        { // TODO: make this look better and protect against sql injection
+        { // TODO: make this look better
             using (var connection = Connection)
             {
                 connection.Open();

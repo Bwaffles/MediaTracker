@@ -1,4 +1,66 @@
-﻿@{
+﻿@model Application.Movies.Queries.Dashboard.MovieDashboardModel
+
+@{
     ViewBag.Title = "Home Page";
 }
- Heyo... this will have something eventually. I don't know, maybe dashboard stuffs?
+
+
+<div class="ui grid">
+    <div class="eight wide column">
+        <h2 class="ui horizontal divider header">
+            <i class="chart bar icon"></i>
+            Stats
+        </h2>
+        <div class="ui fluid raised card">
+            <div class="content">
+                <div class="ui horizontal divider">Watched</div>
+                <div class="ui fluid blue top attached buttons">
+                    <button class="ui button">Daily</button>
+                    <button class="ui button">Monthly</button>
+                    <button class="ui button">Yearly</button>
+                </div>
+                <div class="ui attached segment">
+                    Chart stuff
+                </div>
+            </div>
+        </div>
+        <div class="ui fluid raised card">
+            <div class="content">
+                <div class="ui horizontal divider">Rating</div>
+                <div class="ui fluid blue top attached buttons">
+                    <button class="ui button">Genre</button>
+                    <button class="ui button">Year</button>
+                    <button class="ui button">Reason</button>
+                </div>
+                <div class="ui attached segment">
+                    Chart stuff
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="eight wide column">
+        <h2 class="ui horizontal divider header">
+            <i class="clock icon"></i>
+            Last Watched
+        </h2>
+        <div class="ui large feed">
+            @foreach (var t in Model.LastWatched)
+            {
+                <div class="event">
+                    <div class="label">
+                        <img src="@t.PosterUrl">
+                    </div>
+                    <div class="content">
+                        <div class="summary">
+                            Watched
+                            <a class="user" href="@Url.Action("Details", "Movie", new { id = t.MovieId })">@t.Title</a>
+                            <div class="date">
+                                @t.Date
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
