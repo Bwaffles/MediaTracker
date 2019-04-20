@@ -15,9 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaTracker.MVC", "MediaTracker.MVC\MediaTracker.MVC.csproj", "{20E52E8F-900E-4008-AC87-D21D9864F0E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "Application.Tests\Application.UnitTests.csproj", "{8F1ADFAF-25FC-404B-977F-141D2296D466}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migration\Migrations.csproj", "{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrations", "Migration\Migrations.csproj", "{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +47,6 @@ Global
 		{20E52E8F-900E-4008-AC87-D21D9864F0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20E52E8F-900E-4008-AC87-D21D9864F0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E52E8F-900E-4008-AC87-D21D9864F0E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F1ADFAF-25FC-404B-977F-141D2296D466}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3C8B77D-331F-49F8-A306-AC28DCCD4F06}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,6 +1,4 @@
-﻿using Application.Movies;
-using Application.Movies.Queries.Search;
-using AutoFixture;
+﻿using AutoFixture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
@@ -8,7 +6,7 @@ using FluentAssertions;
 using System.Linq;
 using Domain;
 
-namespace Application.Tests.Movies.Queries.Search
+namespace Application.Movies.Queries.Search
 {
     [TestClass]
     public class SearchMovieQueryTests
