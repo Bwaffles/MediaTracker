@@ -8,24 +8,27 @@ using System.Web.Mvc;
 
 namespace MediaTracker.MVC.Controllers
 {
-    public class MovieController : Controller
+    [RoutePrefix("movies")]
+    public class MoviesController : Controller
     {
         private IMovieDetailsQuery movieDetailsQuery;
         private ISearchMovieQuery searchMovieQuery;
         private readonly IWatchMovieCommand watchMovieCommand;
 
-        public MovieController(ISearchMovieQuery searchMovieQuery, IMovieDetailsQuery movieDetailsQuery, IWatchMovieCommand watchMovieCommand)
+        public MoviesController(ISearchMovieQuery searchMovieQuery, IMovieDetailsQuery movieDetailsQuery, IWatchMovieCommand watchMovieCommand)
         {
             this.movieDetailsQuery = movieDetailsQuery;
             this.searchMovieQuery = searchMovieQuery;
             this.watchMovieCommand = watchMovieCommand;
         }
 
+        [Route("{id:int}")]
         public ActionResult Details(int id)
         {
             return View(movieDetailsQuery.Execute(id));
         }
 
+        [Route("")]
         public ActionResult Index(string searchString)
         {
             if (searchString == null)
@@ -34,6 +37,7 @@ namespace MediaTracker.MVC.Controllers
             return View(searchMovieQuery.Execute(searchString));
         }
 
+        [Route("watch")]
         public ActionResult Watch(int movieId)
         {
             // TODO: Get last watch for this movie from DB -- next number
@@ -46,6 +50,7 @@ namespace MediaTracker.MVC.Controllers
             return View(model);
         }
 
+        [Route("watch")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Watch(WatchMovieModel model)
@@ -53,7 +58,7 @@ namespace MediaTracker.MVC.Controllers
             if (ModelState.IsValid)
             {
                 watchMovieCommand.Execute(model);
-                return Json(new { redirectToUrl = Url.Action("Details", "Movie", new { id = model.MovieId }) });
+                return Json(new { redirectToUrl = Url.Action("details", "movies", new { id = model.MovieId }) });
             }
 
             return View(model);

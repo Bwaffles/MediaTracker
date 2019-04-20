@@ -7,7 +7,7 @@
 <h2>Watch</h2>
 <hr />
 
-@using (Html.BeginForm("Watch", "Movie", new { movieId = Model.MovieId }, FormMethod.Post, new { id = "WatchForm", @class = "ui form" }))
+@using (Html.BeginForm("watch", "movies", new { movieId = Model.MovieId }, FormMethod.Post, new { id = "WatchForm", @class = "ui form" }))
 {
     @Html.AntiForgeryToken()
 
@@ -73,7 +73,7 @@
                         var token = $('input[name=__RequestVerificationToken]').val();
 
                         $.ajax({
-                            url: "/Movie/Watch",
+                            url: "/movies/watch",
                             method: "POST",
                             dataType: "json",
                             data: {

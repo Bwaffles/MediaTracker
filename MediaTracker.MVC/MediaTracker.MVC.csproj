@@ -190,8 +190,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Home\HomeController.cs" />
+    <Compile Include="CustomRazorViewEngine.cs" />
+    <Compile Include="Movies\MoviesController.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -443,13 +444,12 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Movie\Index.cshtml" />
-    <Content Include="Views\Movie\Details.cshtml" />
+    <Content Include="_ViewStart.cshtml" />
+    <Content Include="Shared\Views\Error.cshtml" />
+    <Content Include="Shared\Views\_Layout.cshtml" />
+    <Content Include="Home\Views\Index.cshtml" />
+    <Content Include="Movies\Views\Index.cshtml" />
+    <Content Include="Movies\Views\Details.cshtml" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.woff" />
@@ -462,7 +462,7 @@
     <Content Include="webfonts\fa-solid-900.ttf" />
     <Content Include="webfonts\fa-solid-900.woff" />
     <Content Include="webfonts\fa-solid-900.woff2" />
-    <Content Include="Views\Movie\Watch.cshtml" />
+    <Content Include="Movies\Views\Watch.cshtml" />
     <Content Include="semantic\dist\themes\basic\assets\fonts\icons.eot" />
     <Content Include="semantic\dist\themes\basic\assets\fonts\icons.ttf" />
     <Content Include="semantic\dist\themes\basic\assets\fonts\icons.woff" />
@@ -868,7 +868,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Movies\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

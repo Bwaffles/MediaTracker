@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using System
+@using System.Web.Optimization
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,11 +20,11 @@
 </head>
 <body>
     <div class="ui visible inverted left demo vertical labeled icon sidebar menu">
-        <a class="item" href="~/Home">
+        <a class="item" href="@Url.Action("index", "home")">
             <i class="home icon"></i>
             Home
         </a>
-        <a class="item" href="~/Movie">
+        <a class="item" href="@Url.Action("index", "movies")">
             <i class="block film icon"></i>
             Movies
         </a>

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-@using (Html.BeginForm("Index", "Movie", FormMethod.Post, new { @class = "ui big form" }))
+@using (Html.BeginForm("index", "movies", FormMethod.Post, new { @class = "ui big form" }))
 {
 <div class="fields">
     <div class="three wide field">
@@ -30,7 +30,7 @@
         {
             <div class="item">
                 <div class="content">
-                    @Html.ActionLink(@item.Title, "Details", new { id = item.Id }, new { @class = "header" })
+                    @Html.ActionLink(@item.Title, "details", new { id = item.Id }, new { @class = "header" })
                 </div>
             </div>
         }

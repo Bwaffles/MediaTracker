@@ -1,7 +1,7 @@
 ﻿using Application.Movies.Queries.Dashboard;
 using System.Web.Mvc;
 
-namespace MediaTracker.MVC.Controllers
+namespace MediaTracker.MVC.Home
 {
     public class HomeController : Controller
     {

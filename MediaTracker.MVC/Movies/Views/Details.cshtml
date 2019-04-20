@@ -25,11 +25,11 @@
         @if (!Model.Watched)
         {
             <p style="font-weight:bold; text-align:center">Nothing to see here. What are you waiting for...?</p>
-            @Html.ActionLink("I've watched it!", "Watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
+            @Html.ActionLink("I've watched it!", "watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
         }
         else
         {
-            @Html.ActionLink("I've watched it... again!", "Watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
+            @Html.ActionLink("I've watched it... again!", "watch", new { movieId = Model.Id }, new { Class = "ui fluid button green" })
             <br />
             <div class="ui cards">
 
