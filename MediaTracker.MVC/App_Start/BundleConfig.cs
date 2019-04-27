@@ -25,7 +25,7 @@ namespace MediaTracker.MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css",
-                      "~/Content/all.min.css",
+                      "~/Content/font-awesome.min.css",
                       "~/semantic/dist/semantic.min.css",
                       "~/Content/bars-movie.css",
                       "~/Content/jquery.rateyo.css"));

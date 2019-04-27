@@ -1,0 +1,16 @@
+{
+  "name": "mediatracker.mvc",
+  "version": "1.0.0",
+  "description": "My site.",
+  "main": "index.js",
+  "dependencies": {
+    "fomantic-ui": "^2.7.4",
+    "jquery-bar-rating": "^1.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
