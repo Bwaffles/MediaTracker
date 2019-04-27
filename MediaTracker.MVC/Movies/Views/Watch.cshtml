@@ -14,7 +14,6 @@
     <div class="field">
         @Html.LabelFor(model => model.Number)
         @Html.EditorFor(model => model.Number)
-        @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
     </div>
 
     <div class="field">
@@ -22,7 +21,7 @@
         <div class="ui calendar" id="watchCalendar">
             <div class="ui input left icon">
                 <i class="calendar icon"></i>
-                @Html.TextBoxFor(model => model.Date)
+                <input type="text" name="Date" value="@Model.Date.ToString("MMMM dd, yyyy")" />
             </div>
         </div>
     </div>
@@ -38,9 +37,7 @@
     <div class="field">
         @Html.LabelFor(model => model.Comment)
         @Html.TextAreaFor(model => model.Comment)
-        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
     </div>
-    @*@Html.ValidationSummary("Errors", new { @class = "ui error message" })*@
 
     <div id="Submit" class="ui green submit button">Watch!</div>
     @Html.ActionLink("Back", "Details", new { id = Model.MovieId }, new { @class = "ui button" })
@@ -70,13 +67,37 @@
                 })
                 ;
 
+            $.fn.form.settings.rules.date = function (value, maxDate) {
+                var valueMoment = moment(value, "MMMM DD, YYYY");
+                var maxMoment = moment(maxDate, "MMMM DD, YYYY");
+                return valueMoment.isValid() && valueMoment.isSameOrBefore(maxMoment);
+
+            };
+
             $('#WatchForm')
                 .form({
                     on: 'blur',
                     inline: true,
                     fields: {
-                        Number: 'integer[1..9999]',
-                        Date: 'empty'
+                        Number: {
+                            rules: [
+                                {
+                                    type: 'integer[1..9999]',
+                                }
+                            ]
+                        },
+                        Date: {
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: '{name} is required'
+                                },
+                                {
+                                    type: 'date[' + moment().format("MMMM DD, YYYY") + ']',
+                                    prompt: "{name} can't be in the future."
+                                }
+                            ]
+                        }
                     },
                     onSuccess: function (e) {
                         e.preventDefault();

@@ -5,12 +5,17 @@
   "main": "index.js",
   "dependencies": {
     "fomantic-ui": "^2.7.4",
-    "jquery-bar-rating": "^1.2.2"
+    "jquery-bar-rating": "^1.2.2",
+    "moment": "^2.24.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bwaffles1/MediaTracker.git"
+  }
 }

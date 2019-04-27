@@ -11,7 +11,7 @@ namespace Application.Movies.Commands
         public string Comment { get; set; }
 
         [Display(Name = "Date")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [Display(Name = "Number")]
         public int Number { get; set; }
