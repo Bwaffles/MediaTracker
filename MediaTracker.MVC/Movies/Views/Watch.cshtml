@@ -19,8 +19,12 @@
 
     <div class="field">
         @Html.LabelFor(model => model.Date)
-        @Html.TextBoxFor(model => model.Date)
-        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+        <div class="ui calendar" id="watchCalendar">
+            <div class="ui input left icon">
+                <i class="calendar icon"></i>
+                @Html.TextBoxFor(model => model.Date)
+            </div>
+        </div>
     </div>
 
     <div class="inline field">
@@ -33,7 +37,7 @@
     </div>
     <div class="field">
         @Html.LabelFor(model => model.Comment)
-        @Html.EditorFor(model => model.Comment)
+        @Html.TextAreaFor(model => model.Comment)
         @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
     </div>
     @*@Html.ValidationSummary("Errors", new { @class = "ui error message" })*@
@@ -59,6 +63,12 @@
                         ratedFill: '#ffd54f',
                     });
             });
+            $('#watchCalendar')
+                .calendar({
+                    type: 'date',
+                    today: true
+                })
+                ;
 
             $('#WatchForm')
                 .form({
@@ -66,6 +76,7 @@
                     inline: true,
                     fields: {
                         Number: 'integer[1..9999]',
+                        Date: 'empty'
                     },
                     onSuccess: function (e) {
                         e.preventDefault();
