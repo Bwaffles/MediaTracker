@@ -1,5 +1,4 @@
-﻿using Application;
-using Application.Movies;
+﻿using Application.Movies;
 using Application.Movies.Queries.Dashboard;
 using Dapper;
 using Domain;
@@ -60,7 +59,7 @@ namespace Persistance
             movieDashboard.LastWatched = lastWatched.Select(lw =>
             {
                 var watchedItem = tmdbService.Client.GetMovieAsync(lw.MovieId).Result.Adapt<WatchedList>();
-                watchedItem.Date = lw.Date.PrettyDate();
+                watchedItem.Date = lw.Date;
                 return watchedItem;
             });
 

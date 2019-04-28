@@ -21,7 +21,7 @@
         <div class="ui calendar" id="watchCalendar">
             <div class="ui input left icon">
                 <i class="calendar icon"></i>
-                <input type="text" name="Date" value="@Model.Date.ToString("MMMM dd, yyyy")" />
+                <input type="text" id="Date" name="Date" value="@Model.Date.ToString("MMMM dd, yyyy")" />
             </div>
         </div>
     </div>
@@ -62,7 +62,6 @@
             });
             $('#watchCalendar')
                 .calendar({
-                    type: 'date',
                     today: true
                 })
                 ;

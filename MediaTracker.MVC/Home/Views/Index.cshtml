@@ -64,3 +64,12 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.date').each(function () {
+                this.innerText = moment(this.innerText, "MM/DD/YYYY HH:mm:ss A").fromNow();
+            })
+        });
+    </script>
+}
