@@ -3,6 +3,7 @@
     public class WatchModel
     {
         public string Comment { get; set; }
+        public int Id { get; set; }
         public int Number { get; set; }
         public string Rating { get; set; }
         public string WatchedOn { get; set; }

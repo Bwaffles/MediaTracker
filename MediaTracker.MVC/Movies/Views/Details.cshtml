@@ -51,10 +51,8 @@
                                 <i class="pencil icon"></i>
                                 Edit
                             </span>
-                            <span class="right floated">
-                                <i class="trash icon"></i>
-                                Delete
-                            </span>
+                            
+                            @Html.ActionLink("Delete", "unwatch", new { watchId = watchHistory.Id, movieId = Model.Id }, new { Class = "ui basic button red right floated small" })
                         </div>
                     </div>
                 }

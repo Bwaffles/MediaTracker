@@ -32,19 +32,6 @@ namespace Persistance
             return movie;
         }
 
-        private IEnumerable<Watch> GetWatches(int? movieId = null)
-        {
-            IEnumerable<Watch> watches;
-            using (var connection = Connection)
-            {
-                connection.Open();
-                watches = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where @Id is null or wh.\"MovieId\" = @Id order by wh.\"Date\" desc",
-                    new { Id = movieId });
-                connection.Close();
-            }
-            return watches;
-        }
-
         public MovieDashboardModel GetDashboardDetails()
         {
             var movieDashboard = new MovieDashboardModel();
@@ -76,6 +63,16 @@ namespace Persistance
                 });
         }
 
+        public void Unwatch(int watchId)
+        {
+            using (var connection = Connection)
+            {
+                connection.Open();
+                connection.Execute($"DELETE FROM public.\"Watch\" w where w.\"Id\" = @Id;", new { Id = watchId });
+                connection.Close();
+            }
+        }
+
         public void WatchMovie(Watch watch)
         { // TODO: make this look better
             using (var connection = Connection)
@@ -88,6 +85,19 @@ namespace Persistance
 
                 connection.Close();
             }
+        }
+
+        private IEnumerable<Watch> GetWatches(int? movieId = null)
+        {
+            IEnumerable<Watch> watches;
+            using (var connection = Connection)
+            {
+                connection.Open();
+                watches = connection.Query<Watch>($"select wh.* from public.\"Watch\" wh where @Id is null or wh.\"MovieId\" = @Id order by wh.\"Date\" desc",
+                    new { Id = movieId });
+                connection.Close();
+            }
+            return watches;
         }
     }
 }

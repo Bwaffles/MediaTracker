@@ -23,6 +23,7 @@ namespace Application.Movies.Queries.GetMovieDetails
                 Id = movie.Id,
                 WatchHistory = movie.WatchHistory.Select(wh => new WatchModel
                 {
+                    Id = wh.Id,
                     Number = wh.Number,
                     WatchedOn = wh.Date.ToString("dddd MMMM dd, yyyy"),
                     Rating = wh.Rating.ToString(),

@@ -5,21 +5,24 @@ using Application.Movies.Queries.Search;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Application.Movies.Commands.Unwatch;
 
 namespace MediaTracker.MVC.Controllers
 {
     [RoutePrefix("movies")]
     public class MoviesController : Controller
     {
+        private readonly IUnwatchCommand _unwatchCommand;
+        private readonly IWatchMovieCommand watchMovieCommand;
         private IMovieDetailsQuery movieDetailsQuery;
         private ISearchMovieQuery searchMovieQuery;
-        private readonly IWatchMovieCommand watchMovieCommand;
 
-        public MoviesController(ISearchMovieQuery searchMovieQuery, IMovieDetailsQuery movieDetailsQuery, IWatchMovieCommand watchMovieCommand)
+        public MoviesController(ISearchMovieQuery searchMovieQuery, IMovieDetailsQuery movieDetailsQuery, IWatchMovieCommand watchMovieCommand, IUnwatchCommand unwatchCommand)
         {
             this.movieDetailsQuery = movieDetailsQuery;
             this.searchMovieQuery = searchMovieQuery;
             this.watchMovieCommand = watchMovieCommand;
+            _unwatchCommand = unwatchCommand;
         }
 
         [Route("{id:int}")]
@@ -35,6 +38,13 @@ namespace MediaTracker.MVC.Controllers
                 return View(Enumerable.Empty<SearchListItemModel>());
 
             return View(searchMovieQuery.Execute(searchString));
+        }
+
+        [Route("unwatch")]
+        public ActionResult Unwatch(int watchId, int movieId)
+        {
+            _unwatchCommand.Execute(watchId);
+            return RedirectToAction("Details", new { id = movieId });
         }
 
         [Route("watch")]
@@ -55,13 +65,11 @@ namespace MediaTracker.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Watch(WatchMovieModel model)
         {
-            if (ModelState.IsValid)
-            {
-                watchMovieCommand.Execute(model);
-                return Json(new { redirectToUrl = Url.Action("details", "movies", new { id = model.MovieId }) });
-            }
+            if (!ModelState.IsValid)
+                return View(model);
 
-            return View(model);
+            watchMovieCommand.Execute(model);
+            return Json(new { redirectToUrl = Url.Action("details", "movies", new { id = model.MovieId }) });
         }
     }
 }
