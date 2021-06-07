@@ -22,7 +22,7 @@ namespace MediaTracker.MVC
                       "~/semantic/dist/semantic.min.js",
                       "~/Scripts/jquery.barrating.min.js",
                       "~/Scripts/jquery.rateyo.js",
-                      "~/node_modules/moment/min/moment.min.js"));
+                      "~/Scripts/moment.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css",
